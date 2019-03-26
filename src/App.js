@@ -61,8 +61,7 @@ class App extends Component {
               path="/dogs/:name"
               render={routeProps => <DogDetails 
                 {...routeProps}       
-                dogData={this.props.dogs.filter( dog => dog.name === routeProps.match.params.name)[0]}  
-                key={routeProps.match.params.name} 
+                dogData={this.props.dogs.filter( dog => dog.name === routeProps.match.params.name)[0]}
               />}
             />
             <Redirect to="/dogs" />
