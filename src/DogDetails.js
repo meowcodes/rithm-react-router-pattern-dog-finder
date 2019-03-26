@@ -5,7 +5,7 @@ class DogDetails extends Component {
   constructor(props){
     super(props);
     this.state = {
-      dog: this.findDog(this.props.match.params.name)
+      dog: this.props.dogData
     }
   }
 
