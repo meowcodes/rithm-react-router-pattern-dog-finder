@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react'
-import whiskey from './whiskey.jpg'
-import hazel from './hazel.jpg'
-import tubby from './tubby.jpg'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Nav from './Nav';
+import DogList from './DogList';
+import DogDetails from './DogDetails';
+import whiskey from './whiskey.jpg';
+import hazel from './hazel.jpg';
+import tubby from './tubby.jpg';
 import './App.css';
 
 class App extends Component {
@@ -45,8 +48,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <
-        
+        <BrowserRouter>
+          <Nav dogData={this.props.dogs}/>
+          <Switch>
+            <Route 
+              exact 
+              path="/dogs"
+              render={() => <DogList dogData={this.props.dogs} />}
+            />
+            <Route 
+              exact
+              path="/dogs/:name"
+              render={routeProps => <DogDetails {...routeProps} dogData={this.props.dogs} />}
+            />
+            <Redirect to="/dogs" />
+          </Switch>
+        </BrowserRouter>
+
       </div>
     );
   }
